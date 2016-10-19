@@ -2,14 +2,31 @@
   "name": "cjtoolseram-atop",
   "version": "0.1.0",
   "author": "cjtoolseram",
-  "summary": null,
+  "summary": "Manage atop",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  "source": "https://github.com/cjtoolseram/puppet-atop",
+  "tags": ["atop", "monitoring", "top"],
+  "project_page": "https://github.com/cjtoolseram/puppet-atop",
+  "issues_url": "https://github.com/cjtoolseram/puppet-atop/issues",
+  "data_provider": "none",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": ["5","6","7"]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "Wheezy",
+        "Stable"
+      ]
+    }
   ],
-  "data_provider": null
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.0 < 5.0.0"
+    }
+  ],
 }
 
