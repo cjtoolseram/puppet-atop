@@ -1,48 +1,52 @@
-# Class: atop
-# ===========================
+# == Class: atop
 #
-# Full description of class atop here.
+# Allow to install and configure atop.
 #
-# Parameters
-# ----------
+# === Parameters
 #
-# Document parameters here.
+# [*package_name*]
+#   Package name, default to atop.
 #
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
+# [*service_name*]
+#   Service name, default to atop.
 #
-# Variables
-# ----------
+# [*service_run*]
+#   Ensure atop service running, default to false.
 #
-# Here you should define a list of variables that this module would require.
+# [*service_enable*]
+#   Enable atop service, default to false.
 #
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
+# [*interval*]
+#   Interval between snapshots, default to 600.
 #
-# Examples
-# --------
-#
-# @example
-#    class { 'atop':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2016 Your name here, unless otherwise noted.
-#
-class atop {
+# [*logpath*]
+#   Directory were the log will be saved by the service.
+#   Default is /var/log/atop.
+class atop (
+  $package_name = 'atop',
+  $service_name = 'atop',
+  $service_run = true,
+  $service_enable = true,
+  $interval = 600,
+  $logpath = '/var/log/atop',
+) {
 
+  include epel
 
+  package { $package_name:
+    ensure => 'installed',
+  }
+
+  file { $atop::params::conf_file:
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => epp('atop/atop.epp'),
+  }
+
+  service { $service_name:
+    ensure => $service_run,
+    enable => $service_enable,
+  }
 }
