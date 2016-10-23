@@ -29,6 +29,7 @@ class atop (
   $service_enable = true,
   $interval = 600,
   $logpath = '/var/log/atop',
+  #configpath = '/etc/sysconfig/atop',
 ) {
 
   include epel
@@ -37,7 +38,7 @@ class atop (
     ensure => 'installed',
   }
 
-  file { $atop::params::conf_file:
+  file { $configpath:
     ensure  => file,
     owner   => 'root',
     group   => 'root',

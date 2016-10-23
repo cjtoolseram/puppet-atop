@@ -29,6 +29,7 @@ class { 'atop':
   service_enable => false,
   interval       => 120,
   logpath        => '/var/log/myatop/atop',
+  configpath     => '/etc/sysconfig/atop',
 }
 ```
 
@@ -42,8 +43,11 @@ Ensure the service enabled or disable. Accept `true` or `false`. Default: `true`
 ##### `interval`
 Interval between snapshots. Default: `600`
 
-##### `interval`
+##### `logpath`
 Path do snapshots logging. Default: `/var/log/atop`
+
+##### `configpath`
+Path do snapshots logging. Default: `/etc/sysconfig/atop`
 
 ##Development
 Please help to expand this module across multiple linux distros.
