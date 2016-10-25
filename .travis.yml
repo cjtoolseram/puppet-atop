@@ -6,15 +6,15 @@ services:
 matrix:
   include:
   - rvm: default
-    env: BEAKER_set="debian-7"
+    env: BEAKER_set="debian-7_docker"
   - rvm: default
-    env: BEAKER_set="debian-8"
+    env: BEAKER_set="debian-8_docker"
   - rvm: default
-    env: BEAKER_set="centos-5"
+    env: BEAKER_set="centos-5_docker"
   - rvm: default
-    env: BEAKER_set="centos-6"
+    env: BEAKER_set="centos-6_docker"
   - rvm: default
-    env: BEAKER_set="centos-7"
+    env: BEAKER_set="centos-7_docker"
 script: 'bundle exec rspec spec/acceptance'
 notifications:
   email: false
