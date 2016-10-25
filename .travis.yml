@@ -15,6 +15,6 @@ matrix:
     env: BEAKER_set="centos-6"
   - rvm: default
     env: BEAKER_set="centos-7"
-script: 'bundle exec spec spec/acceptance'
+script: 'bundle exec rspec spec/acceptance'
 notifications:
   email: false
