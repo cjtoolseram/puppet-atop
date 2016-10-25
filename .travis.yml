@@ -1,20 +1,19 @@
 ---
 sudo: required
 language: ruby
-services:
-  - docker
+services: docker
 matrix:
   include:
   - rvm: default
-    env: BEAKER_set="debian-7_docker"
+    env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="debian-7_docker"
   - rvm: default
-    env: BEAKER_set="debian-8_docker"
+    env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="debian-8_docker"
   - rvm: default
-    env: BEAKER_set="centos-5_docker"
+    env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="centos-5_docker"
   - rvm: default
-    env: BEAKER_set="centos-6_docker"
+    env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="centos-6_docker"
   - rvm: default
-    env: BEAKER_set="centos-7_docker"
+    env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="centos-7_docker"
 script: 'bundle exec rspec spec/acceptance'
 notifications:
   email: false
