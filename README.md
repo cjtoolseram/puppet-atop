@@ -1,3 +1,5 @@
+[![Build Status](https://img.shields.io/travis/cjtoolseram/puppet-atop.svg)](https://travis-ci.org/cjtoolseram/puppet-atop)
+
 # atop
 
 #### Table of Contents
