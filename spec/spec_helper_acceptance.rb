@@ -13,7 +13,7 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       copy_module_to(host, :source => proj_root, :module_name => 'atop')
-      on (host, puppet('module install stahnma-epel')),
+      on (host, puppet('module install stahnma-epel'))
         {:acceptable_exit_codes => [0]}
     end
   end
