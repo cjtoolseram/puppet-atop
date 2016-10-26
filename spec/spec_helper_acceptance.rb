@@ -1,20 +1,25 @@
 require 'beaker-rspec'
-require 'beaker/puppet_install_helper'
- 
+require 'pry'
+
+# Install Puppet on all hosts
 hosts.each do |host|
   on host, install_puppet
 end
- 
+
 RSpec.configure do |c|
-  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
- 
+  module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+
   c.formatter = :documentation
- 
+
   c.before :suite do
+    # Install module to all hosts
     hosts.each do |host|
-      copy_module_to(host, :source => proj_root, :module_name => 'atop')
-      on (host, puppet('module install stahnma-epel'))
-        {:acceptable_exit_codes => [0]}
+      install_dev_puppet_module_on(host, :source => module_root, :module_name => 'atop',
+          :target_module_path => '/etc/puppet/modules')
+      # Install dependencies
+      on(host, puppet('module', 'install', 'stahnma-epel'))
+
+      # Add more setup code as needed
     end
   end
 end
