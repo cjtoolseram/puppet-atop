@@ -24,6 +24,6 @@ matrix:
     dist: trusty
     services: docker
     env: PUPPET_GEM_VERSION='~> 4.7.0' BEAKER_set="centos-7_docker"
-    script: 'gem list ; bundle exec rspec spec/acceptance'
+    script: 'bundle exec rspec spec/acceptance'
 notifications:
   email: false
