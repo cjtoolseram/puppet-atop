@@ -3,6 +3,7 @@ require 'spec_helper_acceptance'
 describe 'atop' do
   let(:manifest) {
     <<-EOS
+include epel    
 include atop
 EOS
   }
@@ -19,6 +20,7 @@ end
 describe 'atop_customise' do
   let(:manifest) {
     <<-EOS
+include epel
 class { 'atop':
   service_run    => true,
   service_enable => false,
