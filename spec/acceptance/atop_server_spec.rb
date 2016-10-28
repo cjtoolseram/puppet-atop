@@ -4,7 +4,9 @@ describe 'atop' do
   let(:manifest) {
     <<-EOS
 include epel    
-include atop
+class { 'atop':
+  require => Class['epel'],
+}
 EOS
   }
   it 'should apply without errors' do
@@ -27,6 +29,7 @@ class { 'atop':
   interval       => 120,
   logpath        => '/var/log/myatop/atop',
   confpath       => '/etc/sysconfig/atop',
+  require => Class['epel'],
 }
 EOS
   }
