@@ -2,11 +2,8 @@ require 'spec_helper_acceptance'
  
 describe 'atop' do
   let(:manifest) {
-    <<-EOS
-include epel    
-class { 'atop':
-  require => Class['epel'],
-}
+    <<-EOS    
+include atop
 EOS
   }
   it 'should apply without errors' do
@@ -22,14 +19,12 @@ end
 describe 'atop_customise' do
   let(:manifest) {
     <<-EOS
-include epel
 class { 'atop':
   service_run    => true,
   service_enable => false,
   interval       => 120,
   logpath        => '/var/log/myatop/atop',
   confpath       => '/etc/sysconfig/atop',
-  require => Class['epel'],
 }
 EOS
   }

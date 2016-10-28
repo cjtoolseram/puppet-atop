@@ -36,6 +36,7 @@ class atop (
 
   package { $package_name:
     ensure => 'installed',
+    require => Class['epel'],
   }
 
   file { $confpath:
