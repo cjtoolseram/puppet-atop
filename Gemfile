@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
  
-gem 'beaker'
-gem 'beaker-rspec'
-gem 'beaker-puppet_install_helper'
-gem 'puppetlabs_spec_helper'
-gem 'facter'
-gem 'pry'
-if puppetversion = ENV['PUPPET_GEM_VERSION']
-  gem 'puppet', puppetversion, :require => false
-else
-  gem 'puppet', :require => false
+group :tests do
+  gem 'puppetlabs_spec_helper', :require => false
 end
+ 
+group :system_tests do
+  gem 'beaker',       :require => false
+  gem 'beaker-rspec', :require => false
+  gem 'beaker-puppet_install_helper', :require => false
+end
+ 
+gem 'facter'
+gem 'puppet'
