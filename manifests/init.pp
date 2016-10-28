@@ -45,6 +45,7 @@ class atop (
     group   => 'root',
     mode    => '0644',
     content => epp('atop/atop.epp'),
+    notify  => Service[$service_name],
   }
 
   service { $service_name:
