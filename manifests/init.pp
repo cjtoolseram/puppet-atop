@@ -51,5 +51,6 @@ class atop (
   service { $service_name:
     ensure => $service_run,
     enable => $service_enable,
+    require => Package[$package_name],
   }
 }
